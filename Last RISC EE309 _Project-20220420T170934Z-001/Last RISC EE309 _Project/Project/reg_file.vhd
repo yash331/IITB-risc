@@ -1,0 +1,42 @@
+library IEEE;
+use IEEE.std_logic_1164.all;
+use IEEE.numeric_std.all;
+
+entity reg_file is
+  
+    port (
+      rf_a1 : in std_logic_vector(2 downto 0);
+      rf_a2 : in std_logic_vector(2 downto 0);
+      rf_a3 : in std_logic_vector(2 downto 0);
+      rf_d1 : out std_logic_vector(15 downto 0);
+      rf_d2 : out std_logic_vector(15 downto 0);
+      rf_d3 : in std_logic_vector(15 downto 0);
+      rf_d3_read_enable : in std_logic_vector(0 downto 0);
+		clk: in std_logic
+    );
+      
+end entity reg_file;
+
+
+architecture simple of reg_file is
+
+	type regs is array(0 to 7) of std_logic_vector(15 downto 0);
+        signal r: regs;
+		  
+		  begin process(rf_a1, rf_a2, rf_d3_read_enable, rf_a3)
+
+    begin
+        
+
+        rf_d1 <= r(to_integer(unsigned(rf_a1)));
+
+        rf_d2 <= r(to_integer(unsigned(rf_a2)));
+
+        if (clk'event and clk = '1') then 
+		  if (rf_d3_read_enable = "1") then 
+            r(to_integer(unsigned(rf_a3))) <= rf_d3;
+			end if;
+			end if;
+			end process;
+        
+    end architecture simple;

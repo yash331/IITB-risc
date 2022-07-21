@@ -1,0 +1,30 @@
+library ieee;
+use ieee.std_logic_1164.all;
+use ieee.numeric_std.all;
+
+entity IR is
+    port (
+        instruction : in std_logic_vector(15 downto 0);
+        I5_0 : out std_logic_vector(5 downto 0);
+        I8_0 : out std_logic_vector(8 downto 0);
+        I11_9 : out std_logic_vector(2 downto 0);
+        I8_6 : out std_logic_vector(2 downto 0);
+        I5_3 : out std_logic_vector(2 downto 0);
+        I7_0 : out std_logic_vector(7 downto 0)
+    );
+
+end entity;
+
+architecture struct of IR is
+
+begin
+        
+        I5_0 <= instruction(5 downto 0);
+        I8_0 <= instruction(8 downto 0);
+        I11_9 <= instruction(11 downto 9);
+        I8_6 <= instruction(8 downto 6);
+        I5_3 <= instruction(5 downto 3);
+        I7_0 <= instruction(7 downto 0);
+
+
+end architecture;

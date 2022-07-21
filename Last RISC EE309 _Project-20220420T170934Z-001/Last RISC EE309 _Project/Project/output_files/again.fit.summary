@@ -1,0 +1,11 @@
+Fitter Status : Successful - Sun Apr 17 16:49:44 2022
+Quartus Prime Version : 20.1.1 Build 720 11/11/2020 SJ Lite Edition
+Revision Name : again
+Top-level Entity Name : main
+Family : MAX V
+Device : 5M1270ZF256C5
+Timing Models : Final
+Total logic elements : 0 / 1,270 ( 0 % )
+Total pins : 2 / 211 ( < 1 % )
+Total virtual pins : 0
+UFM blocks : 0 / 1 ( 0 % )

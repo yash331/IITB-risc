@@ -1,0 +1,806 @@
+Analysis & Synthesis report for again
+Sun Apr 17 16:49:42 2022
+Quartus Prime Version 20.1.1 Build 720 11/11/2020 SJ Lite Edition
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. Analysis & Synthesis Summary
+  3. Analysis & Synthesis Settings
+  4. Parallel Compilation
+  5. Analysis & Synthesis Source Files Read
+  6. Analysis & Synthesis Resource Usage Summary
+  7. Analysis & Synthesis Resource Utilization by Entity
+  8. State Machine - |main|fsm:fsm_1|y_present
+  9. Registers Removed During Synthesis
+ 10. Removed Registers Triggering Further Register Optimizations
+ 11. General Register Statistics
+ 12. Multiplexer Restructuring Statistics (Restructuring Performed)
+ 13. Parameter Settings for User Entity Instance: datapath:datapath1|ROM:INSTR_MEM
+ 14. Parameter Settings for User Entity Instance: datapath:datapath1|mux_4X1_3bit:M1
+ 15. Parameter Settings for User Entity Instance: datapath:datapath1|mux_4X1_3bit:M2
+ 16. Parameter Settings for User Entity Instance: datapath:datapath1|mux_4X1_3bit:M3
+ 17. Parameter Settings for User Entity Instance: datapath:datapath1|mux_4X1_16bit:M4
+ 18. Parameter Settings for User Entity Instance: datapath:datapath1|mux_4X1_16bit:MA
+ 19. Parameter Settings for User Entity Instance: datapath:datapath1|mux_4X1_16bit:MB
+ 20. Parameter Settings for User Entity Instance: datapath:datapath1|alu_beh:alu
+ 21. Parameter Settings for User Entity Instance: datapath:datapath1|mux_2X1_16bit:n3
+ 22. Parameter Settings for User Entity Instance: datapath:datapath1|RAM:DATA_MEM
+ 23. Parameter Settings for User Entity Instance: datapath:datapath1|mux_2X1_16bit:n2
+ 24. Parameter Settings for User Entity Instance: datapath:datapath1|shifter_1right:shiftright
+ 25. Parameter Settings for User Entity Instance: datapath:datapath1|mux_2X1_8bit:n1
+ 26. Parameter Settings for User Entity Instance: datapath:datapath1|sign_extend_6_16:SE616
+ 27. Parameter Settings for User Entity Instance: datapath:datapath1|sign_extend_9_16:SE919
+ 28. Parameter Settings for User Entity Instance: datapath:datapath1|shifter_7left:shift_7left
+ 29. Parameter Settings for User Entity Instance: datapath:datapath1|shifter_1left:shift_1left
+ 30. Port Connectivity Checks: "datapath:datapath1|INC:incrementor|fulladder:F3"
+ 31. Port Connectivity Checks: "datapath:datapath1|INC:incrementor|fulladder:F2"
+ 32. Port Connectivity Checks: "datapath:datapath1|INC:incrementor|fulladder:F1"
+ 33. Port Connectivity Checks: "datapath:datapath1|INC:incrementor"
+ 34. Port Connectivity Checks: "datapath:datapath1|alu_beh:alu"
+ 35. Port Connectivity Checks: "datapath:datapath1|mux_4X1_16bit:MB"
+ 36. Port Connectivity Checks: "datapath:datapath1|mux_4X1_3bit:M3"
+ 37. Port Connectivity Checks: "datapath:datapath1|mux_4X1_3bit:M1"
+ 38. Port Connectivity Checks: "datapath:datapath1|IR:INSTR_REG"
+ 39. Analysis & Synthesis Messages
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 2020  Intel Corporation. All rights reserved.
+Your use of Intel Corporation's design tools, logic functions 
+and other software and tools, and any partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Intel Program License 
+Subscription Agreement, the Intel Quartus Prime License Agreement,
+the Intel FPGA IP License Agreement, or other applicable license
+agreement, including, without limitation, that your use is for
+the sole purpose of programming logic devices manufactured by
+Intel and sold by Intel or its authorized distributors.  Please
+refer to the applicable agreement for further details, at
+https://fpgasoftware.intel.com/eula.
+
+
+
++---------------------------------------------------------------------------+
+; Analysis & Synthesis Summary                                              ;
++-----------------------------+---------------------------------------------+
+; Analysis & Synthesis Status ; Successful - Sun Apr 17 16:49:42 2022       ;
+; Quartus Prime Version       ; 20.1.1 Build 720 11/11/2020 SJ Lite Edition ;
+; Revision Name               ; again                                       ;
+; Top-level Entity Name       ; main                                        ;
+; Family                      ; MAX V                                       ;
+; Total logic elements        ; 0                                           ;
+; Total pins                  ; 2                                           ;
+; Total virtual pins          ; 0                                           ;
+; UFM blocks                  ; 0 / 1 ( 0 % )                               ;
++-----------------------------+---------------------------------------------+
+
+
++------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Settings                                                                              ;
++------------------------------------------------------------------+--------------------+--------------------+
+; Option                                                           ; Setting            ; Default Value      ;
++------------------------------------------------------------------+--------------------+--------------------+
+; Device                                                           ; 5M1270ZF256C5      ;                    ;
+; Top-level entity name                                            ; main               ; again              ;
+; Family name                                                      ; MAX V              ; Cyclone V          ;
+; Use smart compilation                                            ; Off                ; Off                ;
+; Enable parallel Assembler and Timing Analyzer during compilation ; On                 ; On                 ;
+; Enable compact report table                                      ; Off                ; Off                ;
+; Restructure Multiplexers                                         ; Auto               ; Auto               ;
+; Create Debugging Nodes for IP Cores                              ; Off                ; Off                ;
+; Preserve fewer node names                                        ; On                 ; On                 ;
+; Intel FPGA IP Evaluation Mode                                    ; Enable             ; Enable             ;
+; Verilog Version                                                  ; Verilog_2001       ; Verilog_2001       ;
+; VHDL Version                                                     ; VHDL_1993          ; VHDL_1993          ;
+; State Machine Processing                                         ; Auto               ; Auto               ;
+; Safe State Machine                                               ; Off                ; Off                ;
+; Extract Verilog State Machines                                   ; On                 ; On                 ;
+; Extract VHDL State Machines                                      ; On                 ; On                 ;
+; Ignore Verilog initial constructs                                ; Off                ; Off                ;
+; Iteration limit for constant Verilog loops                       ; 5000               ; 5000               ;
+; Iteration limit for non-constant Verilog loops                   ; 250                ; 250                ;
+; Add Pass-Through Logic to Inferred RAMs                          ; On                 ; On                 ;
+; Infer RAMs from Raw Logic                                        ; On                 ; On                 ;
+; Parallel Synthesis                                               ; On                 ; On                 ;
+; NOT Gate Push-Back                                               ; On                 ; On                 ;
+; Power-Up Don't Care                                              ; On                 ; On                 ;
+; Remove Redundant Logic Cells                                     ; Off                ; Off                ;
+; Remove Duplicate Registers                                       ; On                 ; On                 ;
+; Ignore CARRY Buffers                                             ; Off                ; Off                ;
+; Ignore CASCADE Buffers                                           ; Off                ; Off                ;
+; Ignore GLOBAL Buffers                                            ; Off                ; Off                ;
+; Ignore ROW GLOBAL Buffers                                        ; Off                ; Off                ;
+; Ignore LCELL Buffers                                             ; Off                ; Off                ;
+; Ignore SOFT Buffers                                              ; On                 ; On                 ;
+; Limit AHDL Integers to 32 Bits                                   ; Off                ; Off                ;
+; Optimization Technique                                           ; Balanced           ; Balanced           ;
+; Carry Chain Length                                               ; 70                 ; 70                 ;
+; Auto Carry Chains                                                ; On                 ; On                 ;
+; Auto Open-Drain Pins                                             ; On                 ; On                 ;
+; Perform WYSIWYG Primitive Resynthesis                            ; Off                ; Off                ;
+; Auto Shift Register Replacement                                  ; Auto               ; Auto               ;
+; Allow Shift Register Merging across Hierarchies                  ; Auto               ; Auto               ;
+; Auto Clock Enable Replacement                                    ; On                 ; On                 ;
+; Allow Synchronous Control Signals                                ; On                 ; On                 ;
+; Force Use of Synchronous Clear Signals                           ; Off                ; Off                ;
+; Auto Resource Sharing                                            ; Off                ; Off                ;
+; Use LogicLock Constraints during Resource Balancing              ; On                 ; On                 ;
+; Ignore translate_off and synthesis_off directives                ; Off                ; Off                ;
+; Report Parameter Settings                                        ; On                 ; On                 ;
+; Report Source Assignments                                        ; On                 ; On                 ;
+; Report Connectivity Checks                                       ; On                 ; On                 ;
+; Ignore Maximum Fan-Out Assignments                               ; Off                ; Off                ;
+; Synchronization Register Chain Length                            ; 2                  ; 2                  ;
+; Power Optimization During Synthesis                              ; Normal compilation ; Normal compilation ;
+; HDL message level                                                ; Level2             ; Level2             ;
+; Suppress Register Optimization Related Messages                  ; Off                ; Off                ;
+; Number of Removed Registers Reported in Synthesis Report         ; 5000               ; 5000               ;
+; Number of Swept Nodes Reported in Synthesis Report               ; 5000               ; 5000               ;
+; Number of Inverted Registers Reported in Synthesis Report        ; 100                ; 100                ;
+; Clock MUX Protection                                             ; On                 ; On                 ;
+; Block Design Naming                                              ; Auto               ; Auto               ;
+; Synthesis Effort                                                 ; Auto               ; Auto               ;
+; Shift Register Replacement - Allow Asynchronous Clear Signal     ; On                 ; On                 ;
+; Analysis & Synthesis Message Level                               ; Medium             ; Medium             ;
+; Disable Register Merging Across Hierarchies                      ; Auto               ; Auto               ;
++------------------------------------------------------------------+--------------------+--------------------+
+
+
++------------------------------------------+
+; Parallel Compilation                     ;
++----------------------------+-------------+
+; Processors                 ; Number      ;
++----------------------------+-------------+
+; Number detected on machine ; 8           ;
+; Maximum allowed            ; 4           ;
+;                            ;             ;
+; Average used               ; 1.00        ;
+; Maximum used               ; 1           ;
+;                            ;             ;
+; Usage by Processor         ; % Time Used ;
+;     Processor 1            ; 100.0%      ;
++----------------------------+-------------+
+
+
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                                                   ;
++----------------------------------+-----------------+-----------------+-----------------------------------------------------------------------------------------+---------+
+; File Name with User-Entered Path ; Used in Netlist ; File Type       ; File Name with Absolute Path                                                            ; Library ;
++----------------------------------+-----------------+-----------------+-----------------------------------------------------------------------------------------+---------+
+; FSM_CW_updated.vhd               ; yes             ; User VHDL File  ; C:/Users/TEJAS AMRITKAR/Downloads/Last RISC EE309 - Copy/Project/FSM_CW_updated.vhd     ;         ;
+; T4.vhd                           ; yes             ; User VHDL File  ; C:/Users/TEJAS AMRITKAR/Downloads/Last RISC EE309 - Copy/Project/T4.vhd                 ;         ;
+; T3.vhd                           ; yes             ; User VHDL File  ; C:/Users/TEJAS AMRITKAR/Downloads/Last RISC EE309 - Copy/Project/T3.vhd                 ;         ;
+; T2.vhd                           ; yes             ; User VHDL File  ; C:/Users/TEJAS AMRITKAR/Downloads/Last RISC EE309 - Copy/Project/T2.vhd                 ;         ;
+; T.vhd                            ; yes             ; User VHDL File  ; C:/Users/TEJAS AMRITKAR/Downloads/Last RISC EE309 - Copy/Project/T.vhd                  ;         ;
+; sign_extended_9_16.vhd           ; yes             ; User VHDL File  ; C:/Users/TEJAS AMRITKAR/Downloads/Last RISC EE309 - Copy/Project/sign_extended_9_16.vhd ;         ;
+; sign_extended_6_16.vhd           ; yes             ; User VHDL File  ; C:/Users/TEJAS AMRITKAR/Downloads/Last RISC EE309 - Copy/Project/sign_extended_6_16.vhd ;         ;
+; shifter_7left.vhd                ; yes             ; User VHDL File  ; C:/Users/TEJAS AMRITKAR/Downloads/Last RISC EE309 - Copy/Project/shifter_7left.vhd      ;         ;
+; shifter_1right.vhd               ; yes             ; User VHDL File  ; C:/Users/TEJAS AMRITKAR/Downloads/Last RISC EE309 - Copy/Project/shifter_1right.vhd     ;         ;
+; shifter_1left.vhd                ; yes             ; User VHDL File  ; C:/Users/TEJAS AMRITKAR/Downloads/Last RISC EE309 - Copy/Project/shifter_1left.vhd      ;         ;
+; ROM.vhd                          ; yes             ; User VHDL File  ; C:/Users/TEJAS AMRITKAR/Downloads/Last RISC EE309 - Copy/Project/ROM.vhd                ;         ;
+; reg_file.vhd                     ; yes             ; User VHDL File  ; C:/Users/TEJAS AMRITKAR/Downloads/Last RISC EE309 - Copy/Project/reg_file.vhd           ;         ;
+; RAM.vhd                          ; yes             ; User VHDL File  ; C:/Users/TEJAS AMRITKAR/Downloads/Last RISC EE309 - Copy/Project/RAM.vhd                ;         ;
+; mux_4X1_16bit.vhd                ; yes             ; User VHDL File  ; C:/Users/TEJAS AMRITKAR/Downloads/Last RISC EE309 - Copy/Project/mux_4X1_16bit.vhd      ;         ;
+; mux_4X1_3bit.vhd                 ; yes             ; User VHDL File  ; C:/Users/TEJAS AMRITKAR/Downloads/Last RISC EE309 - Copy/Project/mux_4X1_3bit.vhd       ;         ;
+; mux_2X1_16bits.vhd               ; yes             ; User VHDL File  ; C:/Users/TEJAS AMRITKAR/Downloads/Last RISC EE309 - Copy/Project/mux_2X1_16bits.vhd     ;         ;
+; mux_2X1_8bits.vhd                ; yes             ; User VHDL File  ; C:/Users/TEJAS AMRITKAR/Downloads/Last RISC EE309 - Copy/Project/mux_2X1_8bits.vhd      ;         ;
+; IR.vhd                           ; yes             ; User VHDL File  ; C:/Users/TEJAS AMRITKAR/Downloads/Last RISC EE309 - Copy/Project/IR.vhd                 ;         ;
+; INC.vhd                          ; yes             ; User VHDL File  ; C:/Users/TEJAS AMRITKAR/Downloads/Last RISC EE309 - Copy/Project/INC.vhd                ;         ;
+; fulladder.vhd                    ; yes             ; User VHDL File  ; C:/Users/TEJAS AMRITKAR/Downloads/Last RISC EE309 - Copy/Project/fulladder.vhd          ;         ;
+; datapath.vhd                     ; yes             ; User VHDL File  ; C:/Users/TEJAS AMRITKAR/Downloads/Last RISC EE309 - Copy/Project/datapath.vhd           ;         ;
+; B.vhd                            ; yes             ; User VHDL File  ; C:/Users/TEJAS AMRITKAR/Downloads/Last RISC EE309 - Copy/Project/B.vhd                  ;         ;
+; ALU.vhd                          ; yes             ; User VHDL File  ; C:/Users/TEJAS AMRITKAR/Downloads/Last RISC EE309 - Copy/Project/ALU.vhd                ;         ;
+; main.vhd                         ; yes             ; User VHDL File  ; C:/Users/TEJAS AMRITKAR/Downloads/Last RISC EE309 - Copy/Project/main.vhd               ;         ;
+; test_vhdl.vhd                    ; yes             ; User VHDL File  ; C:/Users/TEJAS AMRITKAR/Downloads/Last RISC EE309 - Copy/Project/test_vhdl.vhd          ;         ;
++----------------------------------+-----------------+-----------------+-----------------------------------------------------------------------------------------+---------+
+
+
++-----------------------------------------------------+
+; Analysis & Synthesis Resource Usage Summary         ;
++---------------------------------------------+-------+
+; Resource                                    ; Usage ;
++---------------------------------------------+-------+
+; Total logic elements                        ; 0     ;
+;     -- Combinational with no register       ; 0     ;
+;     -- Register only                        ; 0     ;
+;     -- Combinational with a register        ; 0     ;
+;                                             ;       ;
+; Logic element usage by number of LUT inputs ;       ;
+;     -- 4 input functions                    ; 0     ;
+;     -- 3 input functions                    ; 0     ;
+;     -- 2 input functions                    ; 0     ;
+;     -- 1 input functions                    ; 0     ;
+;     -- 0 input functions                    ; 0     ;
+;                                             ;       ;
+; Logic elements by mode                      ;       ;
+;     -- normal mode                          ; 0     ;
+;     -- arithmetic mode                      ; 0     ;
+;     -- qfbk mode                            ; 0     ;
+;     -- register cascade mode                ; 0     ;
+;     -- synchronous clear/load mode          ; 0     ;
+;     -- asynchronous clear/load mode         ; 0     ;
+;                                             ;       ;
+; Total registers                             ; 0     ;
+; I/O pins                                    ; 2     ;
++---------------------------------------------+-------+
+
+
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                                                ;
++----------------------------+-------------+--------------+------------+------+--------------+--------------+-------------------+------------------+-----------------+------------+---------------------+-------------+--------------+
+; Compilation Hierarchy Node ; Logic Cells ; LC Registers ; UFM Blocks ; Pins ; Virtual Pins ; LUT-Only LCs ; Register-Only LCs ; LUT/Register LCs ; Carry Chain LCs ; Packed LCs ; Full Hierarchy Name ; Entity Name ; Library Name ;
++----------------------------+-------------+--------------+------------+------+--------------+--------------+-------------------+------------------+-----------------+------------+---------------------+-------------+--------------+
+; |main                      ; 0 (0)       ; 0            ; 0          ; 2    ; 0            ; 0 (0)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |main               ; main        ; work         ;
++----------------------------+-------------+--------------+------------+------+--------------+--------------+-------------------+------------------+-----------------+------------+---------------------+-------------+--------------+
+Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
+
+
+Encoding Type:  One-Hot
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; State Machine - |main|fsm:fsm_1|y_present                                                                                                                                                                                                                                                                                                                                                                                           ;
++---------------+---------------+---------------+---------------+---------------+---------------+---------------+---------------+---------------+---------------+---------------+---------------+---------------+---------------+---------------+---------------+--------------+--------------+--------------+--------------+--------------+--------------+--------------+--------------+--------------+--------------+---------------+
+; Name          ; y_present.S24 ; y_present.S23 ; y_present.S22 ; y_present.S21 ; y_present.S20 ; y_present.S19 ; y_present.S18 ; y_present.S17 ; y_present.S16 ; y_present.S15 ; y_present.S14 ; y_present.S13 ; y_present.S12 ; y_present.S11 ; y_present.S10 ; y_present.S9 ; y_present.S8 ; y_present.S7 ; y_present.S6 ; y_present.S5 ; y_present.S4 ; y_present.S3 ; y_present.S2 ; y_present.S1 ; y_present.S0 ; y_present.rst ;
++---------------+---------------+---------------+---------------+---------------+---------------+---------------+---------------+---------------+---------------+---------------+---------------+---------------+---------------+---------------+---------------+--------------+--------------+--------------+--------------+--------------+--------------+--------------+--------------+--------------+--------------+---------------+
+; y_present.rst ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0             ;
+; y_present.S0  ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 1            ; 1             ;
+; y_present.S1  ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 1            ; 0            ; 1             ;
+; y_present.S2  ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 1            ; 0            ; 0            ; 1             ;
+; y_present.S3  ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 1            ; 0            ; 0            ; 0            ; 1             ;
+; y_present.S4  ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0            ; 0            ; 0            ; 0            ; 0            ; 1            ; 0            ; 0            ; 0            ; 0            ; 1             ;
+; y_present.S5  ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0            ; 0            ; 0            ; 0            ; 1            ; 0            ; 0            ; 0            ; 0            ; 0            ; 1             ;
+; y_present.S6  ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0            ; 0            ; 0            ; 1            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 1             ;
+; y_present.S7  ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0            ; 0            ; 1            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 1             ;
+; y_present.S8  ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0            ; 1            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 1             ;
+; y_present.S9  ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 1            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 1             ;
+; y_present.S10 ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 1             ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 1             ;
+; y_present.S11 ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 1             ; 0             ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 1             ;
+; y_present.S12 ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 1             ; 0             ; 0             ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 1             ;
+; y_present.S13 ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 1             ; 0             ; 0             ; 0             ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 1             ;
+; y_present.S14 ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 1             ; 0             ; 0             ; 0             ; 0             ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 1             ;
+; y_present.S15 ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 1             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 1             ;
+; y_present.S16 ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 1             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 1             ;
+; y_present.S17 ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 1             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 1             ;
+; y_present.S18 ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 1             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 1             ;
+; y_present.S19 ; 0             ; 0             ; 0             ; 0             ; 0             ; 1             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 1             ;
+; y_present.S20 ; 0             ; 0             ; 0             ; 0             ; 1             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 1             ;
+; y_present.S21 ; 0             ; 0             ; 0             ; 1             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 1             ;
+; y_present.S22 ; 0             ; 0             ; 1             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 1             ;
+; y_present.S23 ; 0             ; 1             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 1             ;
+; y_present.S24 ; 1             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0             ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 1             ;
++---------------+---------------+---------------+---------------+---------------+---------------+---------------+---------------+---------------+---------------+---------------+---------------+---------------+---------------+---------------+---------------+--------------+--------------+--------------+--------------+--------------+--------------+--------------+--------------+--------------+--------------+---------------+
+
+
++---------------------------------------------------------------------------------+
+; Registers Removed During Synthesis                                              ;
++----------------------------------------+----------------------------------------+
+; Register name                          ; Reason for Removal                     ;
++----------------------------------------+----------------------------------------+
+; fsm:fsm_1|y_present.S1                 ; Lost fanout                            ;
+; fsm:fsm_1|y_present.S2                 ; Lost fanout                            ;
+; fsm:fsm_1|y_present.S3                 ; Lost fanout                            ;
+; fsm:fsm_1|y_present.S6                 ; Lost fanout                            ;
+; fsm:fsm_1|y_present.S8                 ; Lost fanout                            ;
+; fsm:fsm_1|y_present.S11                ; Lost fanout                            ;
+; fsm:fsm_1|y_present.S10                ; Lost fanout                            ;
+; fsm:fsm_1|y_present.S12                ; Lost fanout                            ;
+; fsm:fsm_1|y_present.S15                ; Lost fanout                            ;
+; fsm:fsm_1|y_present.S16                ; Lost fanout                            ;
+; fsm:fsm_1|y_present.S17                ; Lost fanout                            ;
+; fsm:fsm_1|y_present.S18                ; Lost fanout                            ;
+; fsm:fsm_1|y_present.S19                ; Lost fanout                            ;
+; fsm:fsm_1|y_present.S24                ; Lost fanout                            ;
+; fsm:fsm_1|y_present.S20                ; Stuck at GND due to stuck port data_in ;
+; fsm:fsm_1|y_present.S21                ; Stuck at GND due to stuck port data_in ;
+; fsm:fsm_1|y_present.rst                ; Lost fanout                            ;
+; fsm:fsm_1|y_present.S0                 ; Lost fanout                            ;
+; fsm:fsm_1|y_present.S4                 ; Lost fanout                            ;
+; fsm:fsm_1|y_present.S5                 ; Lost fanout                            ;
+; fsm:fsm_1|y_present.S7                 ; Lost fanout                            ;
+; fsm:fsm_1|y_present.S9                 ; Lost fanout                            ;
+; fsm:fsm_1|y_present.S13                ; Lost fanout                            ;
+; fsm:fsm_1|y_present.S14                ; Lost fanout                            ;
+; fsm:fsm_1|y_present.S22                ; Lost fanout                            ;
+; fsm:fsm_1|y_present.S23                ; Lost fanout                            ;
+; Total Number of Removed Registers = 26 ;                                        ;
++----------------------------------------+----------------------------------------+
+
+
++---------------------------------------------------------------------------------------------------------------------------------+
+; Removed Registers Triggering Further Register Optimizations                                                                     ;
++-------------------------+---------------------------+---------------------------------------------------------------------------+
+; Register name           ; Reason for Removal        ; Registers Removed due to This Register                                    ;
++-------------------------+---------------------------+---------------------------------------------------------------------------+
+; fsm:fsm_1|y_present.S20 ; Stuck at GND              ; fsm:fsm_1|y_present.S21, fsm:fsm_1|y_present.S0, fsm:fsm_1|y_present.S7,  ;
+;                         ; due to stuck port data_in ; fsm:fsm_1|y_present.S13, fsm:fsm_1|y_present.S14, fsm:fsm_1|y_present.S23 ;
+; fsm:fsm_1|y_present.S11 ; Lost Fanouts              ; fsm:fsm_1|y_present.S10                                                   ;
++-------------------------+---------------------------+---------------------------------------------------------------------------+
+
+
++------------------------------------------------------+
+; General Register Statistics                          ;
++----------------------------------------------+-------+
+; Statistic                                    ; Value ;
++----------------------------------------------+-------+
+; Total registers                              ; 0     ;
+; Number of registers using Synchronous Clear  ; 0     ;
+; Number of registers using Synchronous Load   ; 0     ;
+; Number of registers using Asynchronous Clear ; 0     ;
+; Number of registers using Asynchronous Load  ; 0     ;
+; Number of registers using Clock Enable       ; 0     ;
+; Number of registers using Preset             ; 0     ;
++----------------------------------------------+-------+
+
+
++------------------------------------------------------------------------------------------------------------------------------------------+
+; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                           ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------+
+; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------+
+; 66:1               ; 2 bits    ; 88 LEs        ; 6 LEs                ; 82 LEs                 ; No         ; |main|fsm:fsm_1|y_next.S8  ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------+
+
+
++-------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: datapath:datapath1|ROM:INSTR_MEM ;
++----------------+-------+------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                 ;
++----------------+-------+------------------------------------------------------+
+; rom_size       ; 65536 ; Signed Integer                                       ;
+; instr_size     ; 16    ; Signed Integer                                       ;
++----------------+-------+------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++---------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: datapath:datapath1|mux_4X1_3bit:M1 ;
++----------------+-------+--------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                   ;
++----------------+-------+--------------------------------------------------------+
+; operand_width  ; 3     ; Signed Integer                                         ;
+; sel_line       ; 2     ; Signed Integer                                         ;
++----------------+-------+--------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++---------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: datapath:datapath1|mux_4X1_3bit:M2 ;
++----------------+-------+--------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                   ;
++----------------+-------+--------------------------------------------------------+
+; operand_width  ; 3     ; Signed Integer                                         ;
+; sel_line       ; 2     ; Signed Integer                                         ;
++----------------+-------+--------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++---------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: datapath:datapath1|mux_4X1_3bit:M3 ;
++----------------+-------+--------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                   ;
++----------------+-------+--------------------------------------------------------+
+; operand_width  ; 3     ; Signed Integer                                         ;
+; sel_line       ; 2     ; Signed Integer                                         ;
++----------------+-------+--------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++----------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: datapath:datapath1|mux_4X1_16bit:M4 ;
++----------------+-------+---------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                    ;
++----------------+-------+---------------------------------------------------------+
+; operand_width  ; 16    ; Signed Integer                                          ;
+; sel_line       ; 2     ; Signed Integer                                          ;
++----------------+-------+---------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++----------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: datapath:datapath1|mux_4X1_16bit:MA ;
++----------------+-------+---------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                    ;
++----------------+-------+---------------------------------------------------------+
+; operand_width  ; 16    ; Signed Integer                                          ;
+; sel_line       ; 2     ; Signed Integer                                          ;
++----------------+-------+---------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++----------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: datapath:datapath1|mux_4X1_16bit:MB ;
++----------------+-------+---------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                    ;
++----------------+-------+---------------------------------------------------------+
+; operand_width  ; 16    ; Signed Integer                                          ;
+; sel_line       ; 2     ; Signed Integer                                          ;
++----------------+-------+---------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-----------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: datapath:datapath1|alu_beh:alu ;
++----------------+-------+----------------------------------------------------+
+; Parameter Name ; Value ; Type                                               ;
++----------------+-------+----------------------------------------------------+
+; operand_width  ; 16    ; Signed Integer                                     ;
+; sel_line       ; 2     ; Signed Integer                                     ;
++----------------+-------+----------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++----------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: datapath:datapath1|mux_2X1_16bit:n3 ;
++----------------+-------+---------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                    ;
++----------------+-------+---------------------------------------------------------+
+; operand_width  ; 16    ; Signed Integer                                          ;
+; sel_line       ; 1     ; Signed Integer                                          ;
++----------------+-------+---------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: datapath:datapath1|RAM:DATA_MEM ;
++----------------+-------+-----------------------------------------------------+
+; Parameter Name ; Value ; Type                                                ;
++----------------+-------+-----------------------------------------------------+
+; word_length    ; 16    ; Signed Integer                                      ;
+; num_words      ; 65536 ; Signed Integer                                      ;
++----------------+-------+-----------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++----------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: datapath:datapath1|mux_2X1_16bit:n2 ;
++----------------+-------+---------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                    ;
++----------------+-------+---------------------------------------------------------+
+; operand_width  ; 16    ; Signed Integer                                          ;
+; sel_line       ; 1     ; Signed Integer                                          ;
++----------------+-------+---------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: datapath:datapath1|shifter_1right:shiftright ;
++----------------+-------+------------------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                             ;
++----------------+-------+------------------------------------------------------------------+
+; input_len      ; 8     ; Signed Integer                                                   ;
+; output_len     ; 8     ; Signed Integer                                                   ;
++----------------+-------+------------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++---------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: datapath:datapath1|mux_2X1_8bit:n1 ;
++----------------+-------+--------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                   ;
++----------------+-------+--------------------------------------------------------+
+; operand_width  ; 8     ; Signed Integer                                         ;
+; sel_line       ; 1     ; Signed Integer                                         ;
++----------------+-------+--------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++----------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: datapath:datapath1|sign_extend_6_16:SE616 ;
++----------------+-------+---------------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                          ;
++----------------+-------+---------------------------------------------------------------+
+; input_width    ; 6     ; Signed Integer                                                ;
+; output_width   ; 16    ; Signed Integer                                                ;
++----------------+-------+---------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++----------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: datapath:datapath1|sign_extend_9_16:SE919 ;
++----------------+-------+---------------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                          ;
++----------------+-------+---------------------------------------------------------------+
+; input_width    ; 9     ; Signed Integer                                                ;
+; output_width   ; 16    ; Signed Integer                                                ;
++----------------+-------+---------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: datapath:datapath1|shifter_7left:shift_7left ;
++----------------+-------+------------------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                             ;
++----------------+-------+------------------------------------------------------------------+
+; input_len      ; 16    ; Signed Integer                                                   ;
+; output_len     ; 16    ; Signed Integer                                                   ;
++----------------+-------+------------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: datapath:datapath1|shifter_1left:shift_1left ;
++----------------+-------+------------------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                             ;
++----------------+-------+------------------------------------------------------------------+
+; input_len      ; 16    ; Signed Integer                                                   ;
+; output_len     ; 16    ; Signed Integer                                                   ;
++----------------+-------+------------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++----------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "datapath:datapath1|INC:incrementor|fulladder:F3"                                    ;
++------+--------+----------+-------------------------------------------------------------------------------------+
+; Port ; Type   ; Severity ; Details                                                                             ;
++------+--------+----------+-------------------------------------------------------------------------------------+
+; cin  ; Input  ; Info     ; Stuck at GND                                                                        ;
+; cout ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++------+--------+----------+-------------------------------------------------------------------------------------+
+
+
++-----------------------------------------------------------------------------+
+; Port Connectivity Checks: "datapath:datapath1|INC:incrementor|fulladder:F2" ;
++------+-------+----------+---------------------------------------------------+
+; Port ; Type  ; Severity ; Details                                           ;
++------+-------+----------+---------------------------------------------------+
+; cin  ; Input ; Info     ; Stuck at GND                                      ;
++------+-------+----------+---------------------------------------------------+
+
+
++-----------------------------------------------------------------------------+
+; Port Connectivity Checks: "datapath:datapath1|INC:incrementor|fulladder:F1" ;
++------+-------+----------+---------------------------------------------------+
+; Port ; Type  ; Severity ; Details                                           ;
++------+-------+----------+---------------------------------------------------+
+; b    ; Input ; Info     ; Stuck at GND                                      ;
+; cin  ; Input ; Info     ; Stuck at VCC                                      ;
++------+-------+----------+---------------------------------------------------+
+
+
++----------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "datapath:datapath1|INC:incrementor"                                                 ;
++------+--------+----------+-------------------------------------------------------------------------------------+
+; Port ; Type   ; Severity ; Details                                                                             ;
++------+--------+----------+-------------------------------------------------------------------------------------+
+; t4z  ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++------+--------+----------+-------------------------------------------------------------------------------------+
+
+
++----------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "datapath:datapath1|alu_beh:alu"                                                     ;
++------+--------+----------+-------------------------------------------------------------------------------------+
+; Port ; Type   ; Severity ; Details                                                                             ;
++------+--------+----------+-------------------------------------------------------------------------------------+
+; cin  ; Input  ; Info     ; Connecting a non-array bit to a single-element array                                ;
+; cin  ; Input  ; Info     ; Stuck at GND                                                                        ;
+; sel  ; Input  ; Info     ; Stuck at GND                                                                        ;
+; cout ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
+; z    ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++------+--------+----------+-------------------------------------------------------------------------------------+
+
+
++-----------------------------------------------------------------+
+; Port Connectivity Checks: "datapath:datapath1|mux_4X1_16bit:MB" ;
++----------+-------+----------+-----------------------------------+
+; Port     ; Type  ; Severity ; Details                           ;
++----------+-------+----------+-----------------------------------+
+; b[15..1] ; Input ; Info     ; Stuck at GND                      ;
+; b[0]     ; Input ; Info     ; Stuck at VCC                      ;
++----------+-------+----------+-----------------------------------+
+
+
++----------------------------------------------------------------+
+; Port Connectivity Checks: "datapath:datapath1|mux_4X1_3bit:M3" ;
++------+-------+----------+--------------------------------------+
+; Port ; Type  ; Severity ; Details                              ;
++------+-------+----------+--------------------------------------+
+; c    ; Input ; Info     ; Stuck at VCC                         ;
++------+-------+----------+--------------------------------------+
+
+
++----------------------------------------------------------------+
+; Port Connectivity Checks: "datapath:datapath1|mux_4X1_3bit:M1" ;
++------+-------+----------+--------------------------------------+
+; Port ; Type  ; Severity ; Details                              ;
++------+-------+----------+--------------------------------------+
+; a    ; Input ; Info     ; Stuck at VCC                         ;
++------+-------+----------+--------------------------------------+
+
+
++------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "datapath:datapath1|IR:INSTR_REG"                                                            ;
++--------------+--------+----------+-------------------------------------------------------------------------------------+
+; Port         ; Type   ; Severity ; Details                                                                             ;
++--------------+--------+----------+-------------------------------------------------------------------------------------+
+; dout[15..12] ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++--------------+--------+----------+-------------------------------------------------------------------------------------+
+
+
++-------------------------------+
+; Analysis & Synthesis Messages ;
++-------------------------------+
+Info: *******************************************************************
+Info: Running Quartus Prime Analysis & Synthesis
+    Info: Version 20.1.1 Build 720 11/11/2020 SJ Lite Edition
+    Info: Processing started: Sun Apr 17 16:49:30 2022
+Info: Command: quartus_map --read_settings_files=on --write_settings_files=off again -c again
+Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
+Info (20030): Parallel compilation is enabled and will use 4 of the 4 processors detected
+Info (12021): Found 2 design units, including 1 entities, in source file fsm_cw_updated.vhd
+    Info (12022): Found design unit 1: fsm-BHV File: C:/Users/TEJAS AMRITKAR/Downloads/Last RISC EE309 - Copy/Project/FSM_CW_updated.vhd Line: 14
+    Info (12023): Found entity 1: fsm File: C:/Users/TEJAS AMRITKAR/Downloads/Last RISC EE309 - Copy/Project/FSM_CW_updated.vhd Line: 4
+Info (12021): Found 2 design units, including 1 entities, in source file t4.vhd
+    Info (12022): Found design unit 1: T4-simple File: C:/Users/TEJAS AMRITKAR/Downloads/Last RISC EE309 - Copy/Project/T4.vhd Line: 11
+    Info (12023): Found entity 1: T4 File: C:/Users/TEJAS AMRITKAR/Downloads/Last RISC EE309 - Copy/Project/T4.vhd Line: 3
+Info (12021): Found 2 design units, including 1 entities, in source file t3.vhd
+    Info (12022): Found design unit 1: T3-simple File: C:/Users/TEJAS AMRITKAR/Downloads/Last RISC EE309 - Copy/Project/T3.vhd Line: 11
+    Info (12023): Found entity 1: T3 File: C:/Users/TEJAS AMRITKAR/Downloads/Last RISC EE309 - Copy/Project/T3.vhd Line: 3
+Info (12021): Found 2 design units, including 1 entities, in source file t2.vhd
+    Info (12022): Found design unit 1: T2-simple File: C:/Users/TEJAS AMRITKAR/Downloads/Last RISC EE309 - Copy/Project/T2.vhd Line: 11
+    Info (12023): Found entity 1: T2 File: C:/Users/TEJAS AMRITKAR/Downloads/Last RISC EE309 - Copy/Project/T2.vhd Line: 3
+Info (12021): Found 2 design units, including 1 entities, in source file t.vhd
+    Info (12022): Found design unit 1: T1-simple File: C:/Users/TEJAS AMRITKAR/Downloads/Last RISC EE309 - Copy/Project/T.vhd Line: 11
+    Info (12023): Found entity 1: T1 File: C:/Users/TEJAS AMRITKAR/Downloads/Last RISC EE309 - Copy/Project/T.vhd Line: 3
+Info (12021): Found 2 design units, including 1 entities, in source file sign_extended_9_16.vhd
+    Info (12022): Found design unit 1: sign_extend_9_16-basic File: C:/Users/TEJAS AMRITKAR/Downloads/Last RISC EE309 - Copy/Project/sign_extended_9_16.vhd Line: 13
+    Info (12023): Found entity 1: sign_extend_9_16 File: C:/Users/TEJAS AMRITKAR/Downloads/Last RISC EE309 - Copy/Project/sign_extended_9_16.vhd Line: 5
+Info (12021): Found 2 design units, including 1 entities, in source file sign_extended_6_16.vhd
+    Info (12022): Found design unit 1: sign_extend_6_16-basic File: C:/Users/TEJAS AMRITKAR/Downloads/Last RISC EE309 - Copy/Project/sign_extended_6_16.vhd Line: 13
+    Info (12023): Found entity 1: sign_extend_6_16 File: C:/Users/TEJAS AMRITKAR/Downloads/Last RISC EE309 - Copy/Project/sign_extended_6_16.vhd Line: 5
+Info (12021): Found 2 design units, including 1 entities, in source file shifter_7left.vhd
+    Info (12022): Found design unit 1: shifter_7left-simple File: C:/Users/TEJAS AMRITKAR/Downloads/Last RISC EE309 - Copy/Project/shifter_7left.vhd Line: 19
+    Info (12023): Found entity 1: shifter_7left File: C:/Users/TEJAS AMRITKAR/Downloads/Last RISC EE309 - Copy/Project/shifter_7left.vhd Line: 5
+Info (12021): Found 2 design units, including 1 entities, in source file shifter_1right.vhd
+    Info (12022): Found design unit 1: shifter_1right-simple File: C:/Users/TEJAS AMRITKAR/Downloads/Last RISC EE309 - Copy/Project/shifter_1right.vhd Line: 19
+    Info (12023): Found entity 1: shifter_1right File: C:/Users/TEJAS AMRITKAR/Downloads/Last RISC EE309 - Copy/Project/shifter_1right.vhd Line: 5
+Info (12021): Found 2 design units, including 1 entities, in source file shifter_1left.vhd
+    Info (12022): Found design unit 1: shifter_1left-simple File: C:/Users/TEJAS AMRITKAR/Downloads/Last RISC EE309 - Copy/Project/shifter_1left.vhd Line: 19
+    Info (12023): Found entity 1: shifter_1left File: C:/Users/TEJAS AMRITKAR/Downloads/Last RISC EE309 - Copy/Project/shifter_1left.vhd Line: 5
+Info (12021): Found 2 design units, including 1 entities, in source file rom.vhd
+    Info (12022): Found design unit 1: ROM-behave File: C:/Users/TEJAS AMRITKAR/Downloads/Last RISC EE309 - Copy/Project/ROM.vhd Line: 14
+    Info (12023): Found entity 1: ROM File: C:/Users/TEJAS AMRITKAR/Downloads/Last RISC EE309 - Copy/Project/ROM.vhd Line: 5
+Info (12021): Found 2 design units, including 1 entities, in source file reg_file.vhd
+    Info (12022): Found design unit 1: reg_file-simple File: C:/Users/TEJAS AMRITKAR/Downloads/Last RISC EE309 - Copy/Project/reg_file.vhd Line: 21
+    Info (12023): Found entity 1: reg_file File: C:/Users/TEJAS AMRITKAR/Downloads/Last RISC EE309 - Copy/Project/reg_file.vhd Line: 5
+Info (12021): Found 2 design units, including 1 entities, in source file ram.vhd
+    Info (12022): Found design unit 1: RAM-Behavioral File: C:/Users/TEJAS AMRITKAR/Downloads/Last RISC EE309 - Copy/Project/RAM.vhd Line: 18
+    Info (12023): Found entity 1: RAM File: C:/Users/TEJAS AMRITKAR/Downloads/Last RISC EE309 - Copy/Project/RAM.vhd Line: 5
+Info (12021): Found 2 design units, including 1 entities, in source file mux_4x1_16bit.vhd
+    Info (12022): Found design unit 1: mux_4X1_16bit-Struct File: C:/Users/TEJAS AMRITKAR/Downloads/Last RISC EE309 - Copy/Project/mux_4X1_16bit.vhd Line: 19
+    Info (12023): Found entity 1: mux_4X1_16bit File: C:/Users/TEJAS AMRITKAR/Downloads/Last RISC EE309 - Copy/Project/mux_4X1_16bit.vhd Line: 4
+Info (12021): Found 2 design units, including 1 entities, in source file mux_4x1_3bit.vhd
+    Info (12022): Found design unit 1: mux_4X1_3bit-Struct File: C:/Users/TEJAS AMRITKAR/Downloads/Last RISC EE309 - Copy/Project/mux_4X1_3bit.vhd Line: 19
+    Info (12023): Found entity 1: mux_4X1_3bit File: C:/Users/TEJAS AMRITKAR/Downloads/Last RISC EE309 - Copy/Project/mux_4X1_3bit.vhd Line: 4
+Info (12021): Found 2 design units, including 1 entities, in source file mux_2x1_16bits.vhd
+    Info (12022): Found design unit 1: mux_2X1_16bit-sinmple File: C:/Users/TEJAS AMRITKAR/Downloads/Last RISC EE309 - Copy/Project/mux_2X1_16bits.vhd Line: 18
+    Info (12023): Found entity 1: mux_2X1_16bit File: C:/Users/TEJAS AMRITKAR/Downloads/Last RISC EE309 - Copy/Project/mux_2X1_16bits.vhd Line: 5
+Info (12021): Found 2 design units, including 1 entities, in source file mux_2x1_8bits.vhd
+    Info (12022): Found design unit 1: mux_2X1_8bit-simple File: C:/Users/TEJAS AMRITKAR/Downloads/Last RISC EE309 - Copy/Project/mux_2X1_8bits.vhd Line: 18
+    Info (12023): Found entity 1: mux_2X1_8bit File: C:/Users/TEJAS AMRITKAR/Downloads/Last RISC EE309 - Copy/Project/mux_2X1_8bits.vhd Line: 5
+Info (12021): Found 2 design units, including 1 entities, in source file ir.vhd
+    Info (12022): Found design unit 1: IR-struct File: C:/Users/TEJAS AMRITKAR/Downloads/Last RISC EE309 - Copy/Project/IR.vhd Line: 13
+    Info (12023): Found entity 1: IR File: C:/Users/TEJAS AMRITKAR/Downloads/Last RISC EE309 - Copy/Project/IR.vhd Line: 5
+Info (12021): Found 2 design units, including 1 entities, in source file inc.vhd
+    Info (12022): Found design unit 1: INC-simple File: C:/Users/TEJAS AMRITKAR/Downloads/Last RISC EE309 - Copy/Project/INC.vhd Line: 15
+    Info (12023): Found entity 1: INC File: C:/Users/TEJAS AMRITKAR/Downloads/Last RISC EE309 - Copy/Project/INC.vhd Line: 6
+Info (12021): Found 2 design units, including 1 entities, in source file fulladder.vhd
+    Info (12022): Found design unit 1: fulladder-Struct File: C:/Users/TEJAS AMRITKAR/Downloads/Last RISC EE309 - Copy/Project/fulladder.vhd Line: 7
+    Info (12023): Found entity 1: fulladder File: C:/Users/TEJAS AMRITKAR/Downloads/Last RISC EE309 - Copy/Project/fulladder.vhd Line: 4
+Info (12021): Found 2 design units, including 1 entities, in source file datapath.vhd
+    Info (12022): Found design unit 1: datapath-struct File: C:/Users/TEJAS AMRITKAR/Downloads/Last RISC EE309 - Copy/Project/datapath.vhd Line: 18
+    Info (12023): Found entity 1: datapath File: C:/Users/TEJAS AMRITKAR/Downloads/Last RISC EE309 - Copy/Project/datapath.vhd Line: 8
+Info (12021): Found 2 design units, including 1 entities, in source file b.vhd
+    Info (12022): Found design unit 1: B-simple File: C:/Users/TEJAS AMRITKAR/Downloads/Last RISC EE309 - Copy/Project/B.vhd Line: 11
+    Info (12023): Found entity 1: B File: C:/Users/TEJAS AMRITKAR/Downloads/Last RISC EE309 - Copy/Project/B.vhd Line: 3
+Info (12021): Found 2 design units, including 1 entities, in source file alu.vhd
+    Info (12022): Found design unit 1: alu_beh-a1 File: C:/Users/TEJAS AMRITKAR/Downloads/Last RISC EE309 - Copy/Project/ALU.vhd Line: 23
+    Info (12023): Found entity 1: alu_beh File: C:/Users/TEJAS AMRITKAR/Downloads/Last RISC EE309 - Copy/Project/ALU.vhd Line: 8
+Info (12021): Found 2 design units, including 1 entities, in source file main.vhd
+    Info (12022): Found design unit 1: main-simple File: C:/Users/TEJAS AMRITKAR/Downloads/Last RISC EE309 - Copy/Project/main.vhd Line: 9
+    Info (12023): Found entity 1: main File: C:/Users/TEJAS AMRITKAR/Downloads/Last RISC EE309 - Copy/Project/main.vhd Line: 5
+Info (12021): Found 2 design units, including 1 entities, in source file test_vhdl.vhd
+    Info (12022): Found design unit 1: test_final-test File: C:/Users/TEJAS AMRITKAR/Downloads/Last RISC EE309 - Copy/Project/test_vhdl.vhd Line: 10
+    Info (12023): Found entity 1: test_final File: C:/Users/TEJAS AMRITKAR/Downloads/Last RISC EE309 - Copy/Project/test_vhdl.vhd Line: 7
+Info (12127): Elaborating entity "main" for the top level hierarchy
+Info (12128): Elaborating entity "fsm" for hierarchy "fsm:fsm_1" File: C:/Users/TEJAS AMRITKAR/Downloads/Last RISC EE309 - Copy/Project/main.vhd Line: 37
+Info (12128): Elaborating entity "datapath" for hierarchy "datapath:datapath1" File: C:/Users/TEJAS AMRITKAR/Downloads/Last RISC EE309 - Copy/Project/main.vhd Line: 49
+Warning (10541): VHDL Signal Declaration warning at datapath.vhd(12): used implicit default value for signal "opcode" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations. File: C:/Users/TEJAS AMRITKAR/Downloads/Last RISC EE309 - Copy/Project/datapath.vhd Line: 12
+Warning (10541): VHDL Signal Declaration warning at datapath.vhd(13): used implicit default value for signal "cnd" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations. File: C:/Users/TEJAS AMRITKAR/Downloads/Last RISC EE309 - Copy/Project/datapath.vhd Line: 13
+Warning (10541): VHDL Signal Declaration warning at datapath.vhd(14): used implicit default value for signal "flags" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations. File: C:/Users/TEJAS AMRITKAR/Downloads/Last RISC EE309 - Copy/Project/datapath.vhd Line: 14
+Warning (10541): VHDL Signal Declaration warning at datapath.vhd(251): used implicit default value for signal "I7_0_out" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations. File: C:/Users/TEJAS AMRITKAR/Downloads/Last RISC EE309 - Copy/Project/datapath.vhd Line: 251
+Warning (10036): Verilog HDL or VHDL warning at datapath.vhd(253): object "a" assigned a value but never read File: C:/Users/TEJAS AMRITKAR/Downloads/Last RISC EE309 - Copy/Project/datapath.vhd Line: 253
+Warning (10036): Verilog HDL or VHDL warning at datapath.vhd(253): object "c" assigned a value but never read File: C:/Users/TEJAS AMRITKAR/Downloads/Last RISC EE309 - Copy/Project/datapath.vhd Line: 253
+Warning (10036): Verilog HDL or VHDL warning at datapath.vhd(253): object "d" assigned a value but never read File: C:/Users/TEJAS AMRITKAR/Downloads/Last RISC EE309 - Copy/Project/datapath.vhd Line: 253
+Warning (10492): VHDL Process Statement warning at datapath.vhd(453): signal "T4out" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/TEJAS AMRITKAR/Downloads/Last RISC EE309 - Copy/Project/datapath.vhd Line: 453
+Warning (10492): VHDL Process Statement warning at datapath.vhd(456): signal "INCout" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/TEJAS AMRITKAR/Downloads/Last RISC EE309 - Copy/Project/datapath.vhd Line: 456
+Warning (10631): VHDL Process Statement warning at datapath.vhd(451): inferring latch(es) for signal or variable "INCin", which holds its previous value in one or more paths through the process File: C:/Users/TEJAS AMRITKAR/Downloads/Last RISC EE309 - Copy/Project/datapath.vhd Line: 451
+Warning (10631): VHDL Process Statement warning at datapath.vhd(451): inferring latch(es) for signal or variable "T4in", which holds its previous value in one or more paths through the process File: C:/Users/TEJAS AMRITKAR/Downloads/Last RISC EE309 - Copy/Project/datapath.vhd Line: 451
+Info (10041): Inferred latch for "T4in[0]" at datapath.vhd(451) File: C:/Users/TEJAS AMRITKAR/Downloads/Last RISC EE309 - Copy/Project/datapath.vhd Line: 451
+Info (10041): Inferred latch for "T4in[1]" at datapath.vhd(451) File: C:/Users/TEJAS AMRITKAR/Downloads/Last RISC EE309 - Copy/Project/datapath.vhd Line: 451
+Info (10041): Inferred latch for "T4in[2]" at datapath.vhd(451) File: C:/Users/TEJAS AMRITKAR/Downloads/Last RISC EE309 - Copy/Project/datapath.vhd Line: 451
+Info (10041): Inferred latch for "INCin[0]" at datapath.vhd(451) File: C:/Users/TEJAS AMRITKAR/Downloads/Last RISC EE309 - Copy/Project/datapath.vhd Line: 451
+Info (10041): Inferred latch for "INCin[1]" at datapath.vhd(451) File: C:/Users/TEJAS AMRITKAR/Downloads/Last RISC EE309 - Copy/Project/datapath.vhd Line: 451
+Info (10041): Inferred latch for "INCin[2]" at datapath.vhd(451) File: C:/Users/TEJAS AMRITKAR/Downloads/Last RISC EE309 - Copy/Project/datapath.vhd Line: 451
+Info (12128): Elaborating entity "ROM" for hierarchy "datapath:datapath1|ROM:INSTR_MEM" File: C:/Users/TEJAS AMRITKAR/Downloads/Last RISC EE309 - Copy/Project/datapath.vhd Line: 258
+Warning (10540): VHDL Signal Declaration warning at ROM.vhd(16): used explicit default value for signal "memory" because signal was never assigned a value File: C:/Users/TEJAS AMRITKAR/Downloads/Last RISC EE309 - Copy/Project/ROM.vhd Line: 16
+Warning (10492): VHDL Process Statement warning at ROM.vhd(23): signal "memory" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/TEJAS AMRITKAR/Downloads/Last RISC EE309 - Copy/Project/ROM.vhd Line: 23
+Info (12128): Elaborating entity "IR" for hierarchy "datapath:datapath1|IR:INSTR_REG" File: C:/Users/TEJAS AMRITKAR/Downloads/Last RISC EE309 - Copy/Project/datapath.vhd Line: 265
+Info (12128): Elaborating entity "mux_4X1_3bit" for hierarchy "datapath:datapath1|mux_4X1_3bit:M1" File: C:/Users/TEJAS AMRITKAR/Downloads/Last RISC EE309 - Copy/Project/datapath.vhd Line: 273
+Info (12128): Elaborating entity "reg_file" for hierarchy "datapath:datapath1|reg_file:RF" File: C:/Users/TEJAS AMRITKAR/Downloads/Last RISC EE309 - Copy/Project/datapath.vhd Line: 303
+Warning (10492): VHDL Process Statement warning at reg_file.vhd(31): signal "r" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/TEJAS AMRITKAR/Downloads/Last RISC EE309 - Copy/Project/reg_file.vhd Line: 31
+Warning (10492): VHDL Process Statement warning at reg_file.vhd(33): signal "r" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/TEJAS AMRITKAR/Downloads/Last RISC EE309 - Copy/Project/reg_file.vhd Line: 33
+Warning (10492): VHDL Process Statement warning at reg_file.vhd(35): signal "clk" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/TEJAS AMRITKAR/Downloads/Last RISC EE309 - Copy/Project/reg_file.vhd Line: 35
+Info (12128): Elaborating entity "mux_4X1_16bit" for hierarchy "datapath:datapath1|mux_4X1_16bit:M4" File: C:/Users/TEJAS AMRITKAR/Downloads/Last RISC EE309 - Copy/Project/datapath.vhd Line: 314
+Info (12128): Elaborating entity "alu_beh" for hierarchy "datapath:datapath1|alu_beh:alu" File: C:/Users/TEJAS AMRITKAR/Downloads/Last RISC EE309 - Copy/Project/datapath.vhd Line: 345
+Warning (10492): VHDL Process Statement warning at ALU.vhd(68): signal "op_temp" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/TEJAS AMRITKAR/Downloads/Last RISC EE309 - Copy/Project/ALU.vhd Line: 68
+Warning (10492): VHDL Process Statement warning at ALU.vhd(73): signal "op_temp" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/TEJAS AMRITKAR/Downloads/Last RISC EE309 - Copy/Project/ALU.vhd Line: 73
+Warning (10631): VHDL Process Statement warning at ALU.vhd(49): inferring latch(es) for signal or variable "Cout", which holds its previous value in one or more paths through the process File: C:/Users/TEJAS AMRITKAR/Downloads/Last RISC EE309 - Copy/Project/ALU.vhd Line: 49
+Warning (10631): VHDL Process Statement warning at ALU.vhd(49): inferring latch(es) for signal or variable "op_temp", which holds its previous value in one or more paths through the process File: C:/Users/TEJAS AMRITKAR/Downloads/Last RISC EE309 - Copy/Project/ALU.vhd Line: 49
+Info (10041): Inferred latch for "op_temp[0]" at ALU.vhd(49) File: C:/Users/TEJAS AMRITKAR/Downloads/Last RISC EE309 - Copy/Project/ALU.vhd Line: 49
+Info (10041): Inferred latch for "op_temp[1]" at ALU.vhd(49) File: C:/Users/TEJAS AMRITKAR/Downloads/Last RISC EE309 - Copy/Project/ALU.vhd Line: 49
+Info (10041): Inferred latch for "op_temp[2]" at ALU.vhd(49) File: C:/Users/TEJAS AMRITKAR/Downloads/Last RISC EE309 - Copy/Project/ALU.vhd Line: 49
+Info (10041): Inferred latch for "op_temp[3]" at ALU.vhd(49) File: C:/Users/TEJAS AMRITKAR/Downloads/Last RISC EE309 - Copy/Project/ALU.vhd Line: 49
+Info (10041): Inferred latch for "op_temp[4]" at ALU.vhd(49) File: C:/Users/TEJAS AMRITKAR/Downloads/Last RISC EE309 - Copy/Project/ALU.vhd Line: 49
+Info (10041): Inferred latch for "op_temp[5]" at ALU.vhd(49) File: C:/Users/TEJAS AMRITKAR/Downloads/Last RISC EE309 - Copy/Project/ALU.vhd Line: 49
+Info (10041): Inferred latch for "op_temp[6]" at ALU.vhd(49) File: C:/Users/TEJAS AMRITKAR/Downloads/Last RISC EE309 - Copy/Project/ALU.vhd Line: 49
+Info (10041): Inferred latch for "op_temp[7]" at ALU.vhd(49) File: C:/Users/TEJAS AMRITKAR/Downloads/Last RISC EE309 - Copy/Project/ALU.vhd Line: 49
+Info (10041): Inferred latch for "op_temp[8]" at ALU.vhd(49) File: C:/Users/TEJAS AMRITKAR/Downloads/Last RISC EE309 - Copy/Project/ALU.vhd Line: 49
+Info (10041): Inferred latch for "op_temp[9]" at ALU.vhd(49) File: C:/Users/TEJAS AMRITKAR/Downloads/Last RISC EE309 - Copy/Project/ALU.vhd Line: 49
+Info (10041): Inferred latch for "op_temp[10]" at ALU.vhd(49) File: C:/Users/TEJAS AMRITKAR/Downloads/Last RISC EE309 - Copy/Project/ALU.vhd Line: 49
+Info (10041): Inferred latch for "op_temp[11]" at ALU.vhd(49) File: C:/Users/TEJAS AMRITKAR/Downloads/Last RISC EE309 - Copy/Project/ALU.vhd Line: 49
+Info (10041): Inferred latch for "op_temp[12]" at ALU.vhd(49) File: C:/Users/TEJAS AMRITKAR/Downloads/Last RISC EE309 - Copy/Project/ALU.vhd Line: 49
+Info (10041): Inferred latch for "op_temp[13]" at ALU.vhd(49) File: C:/Users/TEJAS AMRITKAR/Downloads/Last RISC EE309 - Copy/Project/ALU.vhd Line: 49
+Info (10041): Inferred latch for "op_temp[14]" at ALU.vhd(49) File: C:/Users/TEJAS AMRITKAR/Downloads/Last RISC EE309 - Copy/Project/ALU.vhd Line: 49
+Info (10041): Inferred latch for "op_temp[15]" at ALU.vhd(49) File: C:/Users/TEJAS AMRITKAR/Downloads/Last RISC EE309 - Copy/Project/ALU.vhd Line: 49
+Info (10041): Inferred latch for "Cout" at ALU.vhd(49) File: C:/Users/TEJAS AMRITKAR/Downloads/Last RISC EE309 - Copy/Project/ALU.vhd Line: 49
+Info (12128): Elaborating entity "T1" for hierarchy "datapath:datapath1|T1:Temp1" File: C:/Users/TEJAS AMRITKAR/Downloads/Last RISC EE309 - Copy/Project/datapath.vhd Line: 355
+Warning (10492): VHDL Process Statement warning at T.vhd(15): signal "clk" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/TEJAS AMRITKAR/Downloads/Last RISC EE309 - Copy/Project/T.vhd Line: 15
+Warning (10492): VHDL Process Statement warning at T.vhd(19): signal "s" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/TEJAS AMRITKAR/Downloads/Last RISC EE309 - Copy/Project/T.vhd Line: 19
+Info (12128): Elaborating entity "T3" for hierarchy "datapath:datapath1|T3:Temp3" File: C:/Users/TEJAS AMRITKAR/Downloads/Last RISC EE309 - Copy/Project/datapath.vhd Line: 362
+Warning (10492): VHDL Process Statement warning at T3.vhd(15): signal "clk" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/TEJAS AMRITKAR/Downloads/Last RISC EE309 - Copy/Project/T3.vhd Line: 15
+Warning (10492): VHDL Process Statement warning at T3.vhd(19): signal "s" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/TEJAS AMRITKAR/Downloads/Last RISC EE309 - Copy/Project/T3.vhd Line: 19
+Info (12128): Elaborating entity "mux_2X1_16bit" for hierarchy "datapath:datapath1|mux_2X1_16bit:n3" File: C:/Users/TEJAS AMRITKAR/Downloads/Last RISC EE309 - Copy/Project/datapath.vhd Line: 369
+Warning (10492): VHDL Process Statement warning at mux_2X1_16bits.vhd(22): signal "A" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/TEJAS AMRITKAR/Downloads/Last RISC EE309 - Copy/Project/mux_2X1_16bits.vhd Line: 22
+Warning (10492): VHDL Process Statement warning at mux_2X1_16bits.vhd(23): signal "B" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/TEJAS AMRITKAR/Downloads/Last RISC EE309 - Copy/Project/mux_2X1_16bits.vhd Line: 23
+Info (12128): Elaborating entity "RAM" for hierarchy "datapath:datapath1|RAM:DATA_MEM" File: C:/Users/TEJAS AMRITKAR/Downloads/Last RISC EE309 - Copy/Project/datapath.vhd Line: 376
+Info (12128): Elaborating entity "T4" for hierarchy "datapath:datapath1|T4:Temp4" File: C:/Users/TEJAS AMRITKAR/Downloads/Last RISC EE309 - Copy/Project/datapath.vhd Line: 393
+Warning (10492): VHDL Process Statement warning at T4.vhd(16): signal "clk" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/TEJAS AMRITKAR/Downloads/Last RISC EE309 - Copy/Project/T4.vhd Line: 16
+Warning (10492): VHDL Process Statement warning at T4.vhd(20): signal "s" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/TEJAS AMRITKAR/Downloads/Last RISC EE309 - Copy/Project/T4.vhd Line: 20
+Info (12128): Elaborating entity "INC" for hierarchy "datapath:datapath1|INC:incrementor" File: C:/Users/TEJAS AMRITKAR/Downloads/Last RISC EE309 - Copy/Project/datapath.vhd Line: 400
+Warning (10036): Verilog HDL or VHDL warning at INC.vhd(16): object "s3" assigned a value but never read File: C:/Users/TEJAS AMRITKAR/Downloads/Last RISC EE309 - Copy/Project/INC.vhd Line: 16
+Info (12128): Elaborating entity "fulladder" for hierarchy "datapath:datapath1|INC:incrementor|fulladder:F1" File: C:/Users/TEJAS AMRITKAR/Downloads/Last RISC EE309 - Copy/Project/INC.vhd Line: 26
+Info (12128): Elaborating entity "T2" for hierarchy "datapath:datapath1|T2:Temp2" File: C:/Users/TEJAS AMRITKAR/Downloads/Last RISC EE309 - Copy/Project/datapath.vhd Line: 406
+Warning (10492): VHDL Process Statement warning at T2.vhd(16): signal "clk" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/TEJAS AMRITKAR/Downloads/Last RISC EE309 - Copy/Project/T2.vhd Line: 16
+Warning (10492): VHDL Process Statement warning at T2.vhd(20): signal "s" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/TEJAS AMRITKAR/Downloads/Last RISC EE309 - Copy/Project/T2.vhd Line: 20
+Info (12128): Elaborating entity "shifter_1right" for hierarchy "datapath:datapath1|shifter_1right:shiftright" File: C:/Users/TEJAS AMRITKAR/Downloads/Last RISC EE309 - Copy/Project/datapath.vhd Line: 413
+Info (12128): Elaborating entity "B" for hierarchy "datapath:datapath1|B:Buff" File: C:/Users/TEJAS AMRITKAR/Downloads/Last RISC EE309 - Copy/Project/datapath.vhd Line: 418
+Warning (10492): VHDL Process Statement warning at B.vhd(16): signal "clk" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/TEJAS AMRITKAR/Downloads/Last RISC EE309 - Copy/Project/B.vhd Line: 16
+Warning (10492): VHDL Process Statement warning at B.vhd(20): signal "s" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/TEJAS AMRITKAR/Downloads/Last RISC EE309 - Copy/Project/B.vhd Line: 20
+Info (12128): Elaborating entity "mux_2X1_8bit" for hierarchy "datapath:datapath1|mux_2X1_8bit:n1" File: C:/Users/TEJAS AMRITKAR/Downloads/Last RISC EE309 - Copy/Project/datapath.vhd Line: 425
+Warning (10492): VHDL Process Statement warning at mux_2X1_8bits.vhd(22): signal "A" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/TEJAS AMRITKAR/Downloads/Last RISC EE309 - Copy/Project/mux_2X1_8bits.vhd Line: 22
+Warning (10492): VHDL Process Statement warning at mux_2X1_8bits.vhd(23): signal "B" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/TEJAS AMRITKAR/Downloads/Last RISC EE309 - Copy/Project/mux_2X1_8bits.vhd Line: 23
+Info (12128): Elaborating entity "sign_extend_6_16" for hierarchy "datapath:datapath1|sign_extend_6_16:SE616" File: C:/Users/TEJAS AMRITKAR/Downloads/Last RISC EE309 - Copy/Project/datapath.vhd Line: 432
+Info (12128): Elaborating entity "sign_extend_9_16" for hierarchy "datapath:datapath1|sign_extend_9_16:SE919" File: C:/Users/TEJAS AMRITKAR/Downloads/Last RISC EE309 - Copy/Project/datapath.vhd Line: 437
+Info (12128): Elaborating entity "shifter_7left" for hierarchy "datapath:datapath1|shifter_7left:shift_7left" File: C:/Users/TEJAS AMRITKAR/Downloads/Last RISC EE309 - Copy/Project/datapath.vhd Line: 442
+Info (12128): Elaborating entity "shifter_1left" for hierarchy "datapath:datapath1|shifter_1left:shift_1left" File: C:/Users/TEJAS AMRITKAR/Downloads/Last RISC EE309 - Copy/Project/datapath.vhd Line: 447
+Info (17049): 24 registers lost all their fanouts during netlist optimizations.
+Warning (21074): Design contains 2 input pin(s) that do not drive logic
+    Warning (15610): No output dependent on input pin "reset" File: C:/Users/TEJAS AMRITKAR/Downloads/Last RISC EE309 - Copy/Project/main.vhd Line: 6
+    Warning (15610): No output dependent on input pin "clk" File: C:/Users/TEJAS AMRITKAR/Downloads/Last RISC EE309 - Copy/Project/main.vhd Line: 6
+Info (21057): Implemented 2 device resources after synthesis - the final resource count might be different
+    Info (21058): Implemented 2 input pins
+    Info (21059): Implemented 0 output pins
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 39 warnings
+    Info: Peak virtual memory: 4752 megabytes
+    Info: Processing ended: Sun Apr 17 16:49:42 2022
+    Info: Elapsed time: 00:00:12
+    Info: Total CPU time (on all processors): 00:00:26
+
+
